@@ -1,0 +1,6 @@
+vcpkg_installed/
+build/
+*.exe
+*.iik
+*.obj
+*.pdb

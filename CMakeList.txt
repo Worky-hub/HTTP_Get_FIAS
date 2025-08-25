@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.16)
+project(GetInfoFromFias)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Заголовочные файлы
+include_directories(include)
+
+# Исходники
+set(SOURCES
+    src/main.cpp
+    src/HTTPGet.cpp
+)
+
+# Создаём исполняемый файл
+add_executable(GetInfoFromFias ${SOURCES})
+
+# Линкуем WinHTTP
+target_link_libraries(GetInfoFromFias winhttp)

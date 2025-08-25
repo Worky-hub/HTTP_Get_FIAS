@@ -1,0 +1,209 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Build EXE",
+			"command": "call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\" && cl /nologo /EHsc ${fileBasename}",
+			"args":  [
+				"/IC:\\cppProjects\\test\\vcpkg_installed\\x64-windows\\include\\nlohmann"
+			],
+			"options": {
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/d",
+						"/c"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		},
+        {
+            "label": "Build DLL",
+            "type": "shell",
+            "command": "call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\" && cl /LD \"${file}\" /Fe:\"${fileDirname}\\${fileBasenameNoExtension}.dll\"",
+            "args": [],
+			"options": {
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/d",
+						"/c"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+        },
+		{
+			"type": "shell",
+			"label": "Build EXE cmdmsvc.exe",
+			"command": "C:\\cppWorkspace\\Build\\cmdmsvc64nativetools.exe",
+			"args":  [
+				"cl",
+				"/EHsc", 
+				"/std:c++17", 
+				"/Zi", 
+				"/Od", 
+				"${file}", 
+				"/I", "${fileDirname}\\..\\vcpkg_installed\\x64-windows\\include", 
+				"/Fo:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.obj", 
+				"/Fd:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.pdb", 
+				"/Fe:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.exe", 
+				"/link", 
+				"winhttp.lib", 
+				"/DEBUG", 
+				// "/OUT:${fileDirname}\\build\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/d",
+						"/c"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		},
+		{
+            "label": "build json EXE (static jsoncpp)",
+            "type": "shell",
+            "command": "",
+            "args": [],
+			"options": {
+				"shell": {
+					"executable": "C:\\cppProjects\\Build\\cmdmsvc64nativetools.exe",
+					"args": [
+						"cl",
+						"/EHsc",
+						"/std:c++17",
+						"${fileDirname}\\${fileBasename}",
+						"/I", "${fileBasename}\\vcpkg_installed\\x64-windows\\include"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": ["$msCompile"]
+        },
+		{
+            "label": "build json DLL (static jsoncpp)",
+            "type": "shell",
+            "command": "",
+            "args": [],
+			"options": {
+				"shell": {
+					"executable": "C:\\cppProjects\\Build\\cmdmsvc64nativetools.exe",
+					"args": [
+						"cl",
+						"/EHsc",
+						"/std:c++17",
+						"${fileDirname}\\${fileBasename}",
+						"/I", "${fileBasename}\\vcpkg_installed\\x64-windows\\include"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": ["$msCompile"]
+        },
+		// {
+		// 	"label": "build with MSVC (debug EXE) Curl lib",
+		// 	"type": "shell",
+		// 	"command": "C:\\cppWorkspace\\Build\\cmdmsvc64nativetools.exe",
+		// 	"args": [
+		// 		"cl",
+		// 		"/EHsc", 
+		// 		"/std:c++17", 
+		// 		"/Zi", 
+		// 		"/Od", 
+		// 		"${file}", 
+		// 		"/I", "${fileDirname}\\vcpkg_installed\\x64-windows\\include", 
+		// 		"/Fo:", "${fileDirname}\\build\\${fileBasenameNoExtension}.obj", 
+		// 		"/Fd:", "${fileDirname}\\build\\${fileBasenameNoExtension}.pdb", 
+		// 		"/Fe:", "${fileDirname}\\build\\${fileBasenameNoExtension}.exe", 
+		// 		"/link", 
+		// 		"/LIBPATH:${fileDirname}\\vcpkg_installed\\x64-windows\\lib", 
+		// 		"libcurl.lib", 
+		// 		"ws2_32.lib", 
+		// 		"wldap32.lib", 
+		// 		"/DEBUG", 
+		// 		// "/OUT:${fileDirname}\\build\\${fileBasenameNoExtension}.exe"
+		// 	],
+		// 	"group": {
+		// 		"kind": "build",
+		// 		"isDefault": false
+		// 	},
+		// 	"problemMatcher": ["$msCompile"]
+		// }, 
+		{
+			"label": "build with MSVC (debug EXE)",
+			"type": "shell",
+			"command": "C:\\cppWorkspace\\Build\\cmdmsvc64nativetools.exe",
+			"args": [
+				"cl",
+				"/EHsc", 
+				"/std:c++17", 
+				"/Zi", 
+				"/Od", 
+				"${file}", 
+				"/I", "${fileDirname}\\vcpkg_installed\\x64-windows\\include", 
+				"/Fo:", "${fileDirname}\\build\\${fileBasenameNoExtension}.obj", 
+				"/Fd:", "${fileDirname}\\build\\${fileBasenameNoExtension}.pdb", 
+				"/Fe:", "${fileDirname}\\build\\${fileBasenameNoExtension}.exe", 
+				"/link", 
+				"winhttp.lib", 
+				"/DEBUG", 
+				// "/OUT:${fileDirname}\\build\\${fileBasenameNoExtension}.exe"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": ["$msCompile"]
+		}, 
+		{
+            "label": "build with MSVC (debug DLL)",
+            "type": "shell",
+            "command": "",
+            "args": [],
+			"options": {
+				"shell": {
+					"executable": "C:\\cppProjects\\Build\\cmdmsvc64nativetools.exe",
+					"args": [
+						"cl",
+						"/LD",
+						"/EHsc",
+						"/std:c++17",
+						"/Zi",
+						"/Od",
+						"${fileDirname}\\${fileBasename}",
+						"/I", "${fileDirname}\\vcpkg_installed\\x64-windows\\include",
+						"/Fe:"," ${fileDirname}\\build\\${fileBasenameNoExtension}.dll",	
+						"/Fo:","${fileDirname}\\build\\${fileBasenameNoExtension}.obj",
+						"/Fd:","${fileDirname}\\build\\${fileBasenameNoExtension}.pdb"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": ["$msCompile"]
+        }
+	]
+}

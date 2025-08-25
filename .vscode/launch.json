@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            
+            "name": "Debug wiht MSVC",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true
+
+        }, 
+
+        {
+
+            "name": "Debug wiht MSVC HTTPS",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}\\build",
+            "console": "integratedTerminal",
+            "preLaunchTask": "build with MSVC (debug EXE)"
+
+        }
+    ]
+}
