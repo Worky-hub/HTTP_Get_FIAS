@@ -13,8 +13,13 @@ set(SOURCES
     src/HTTPGet.cpp
 )
 
+set(HEADER 
+    include/main.hpp
+    include/HTTPGet.hpp
+)
+
 # Создаём исполняемый файл
-add_executable(GetInfoFromFias ${SOURCES})
+add_executable(getInfoFromFias ${SOURCES})
 
 # Линкуем WinHTTP
-target_link_libraries(GetInfoFromFias winhttp)
+target_link_libraries(getInfoFromFias winhttp)
