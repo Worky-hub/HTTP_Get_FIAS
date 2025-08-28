@@ -6,7 +6,7 @@
 			"label": "Build EXE",
 			"command": "call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\" && cl /nologo /EHsc ${fileBasename}",
 			"args":  [
-				"/IC:\\cppProjects\\test\\vcpkg_installed\\x64-windows\\include\\nlohmann"
+				"/IC:\\cppProjects\\test\\vcpkg_installed\\x64-windows\\include"
 			],
 			"options": {
 				"shell": {
@@ -43,7 +43,7 @@
         },
 		{
 			"type": "shell",
-			"label": "Build EXE cmdmsvc.exe",
+			"label": "1Build EXE cmdmsvc.exe",
 			"command": "C:\\cppWorkspace\\Build\\cmdmsvc64nativetools.exe",
 			"args":  [
 				"cl",
@@ -53,9 +53,10 @@
 				"/Od", 
 				"${file}", 
 				"/I", "${fileDirname}\\..\\vcpkg_installed\\x64-windows\\include", 
-				"/Fo:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.obj", 
-				"/Fd:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.pdb", 
-				"/Fe:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.exe", 
+				"/I", "${fileDirname}\\..\\vcpkg_installed\\x64-windows-static\\include", 
+				// "/Fo:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.obj", 
+				// "/Fd:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.pdb", 
+				// "/Fe:", "${fileDirname}\\..\\build\\${fileBasenameNoExtension}.exe", 
 				"/link", 
 				"winhttp.lib", 
 				"/DEBUG", 
@@ -204,6 +205,39 @@
 				"isDefault": false
 			},
 			"problemMatcher": ["$msCompile"]
-        }
+        },
+		{
+			"type": "shell",
+			"label": "Build CMake EXE cmdmsvc.exe",
+			"command": "cmd.exe", //"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+			"args":  [
+				// "cmake",
+				// "-B", "cmake_build",
+				// "-S", ".",
+				// "--build cmake_build --config Release"
+                "cmake -B build_cache -S . && cmake --build build_cache --config Release",
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		}
 	]
 }
+
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "CMake Configure & Build Release",
+//             "type": "shell",
+//             "command": "powershell",
+//             "args": [
+//                 "-Command",
+//                 "& { cmake -B build_cache -S .; cmake --build build_cache --config Release }"
+//             ],
+//             "group": "build",
+//             "problemMatcher": []
+//         }
+//     ]
+// }
