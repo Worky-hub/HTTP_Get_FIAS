@@ -5,6 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/vcpkg_installed/x64-windows/include"
+                // "C:/cppWorkspace/Projects/Work_Projects/FIAS/Get_Requests/external/boost-url/include/boost"
             ],
             "defines": [
                 "_DEBUG",

@@ -208,14 +208,25 @@
         },
 		{
 			"type": "shell",
-			"label": "Build CMake EXE cmdmsvc.exe",
-			"command": "cmd.exe", //"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+			"label": "Build CMake preparation",
+			"command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
 			"args":  [
-				// "cmake",
-				// "-B", "cmake_build",
-				// "-S", ".",
-				// "--build cmake_build --config Release"
-                "cmake -B build_cache -S . && cmake --build build_cache --config Release",
+				"cmake",
+				"-B", "cmake_build",
+				"-S", "."
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Build CMake EXE cmdmsvc.exe",
+			"command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+			"args":  [
+				"--build", "cmake_build",
+				// "--config", "Release"
 			],
 			"group": {
 				"kind": "build",

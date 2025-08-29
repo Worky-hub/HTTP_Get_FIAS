@@ -4,9 +4,10 @@
     "builtin-baseline": "0c4cf19224a049cf82f4521e29e39f7bd680440c",
     "dependencies": [
         {
-            "name": "boost-url",
-            "default-features": false,
-            "features":[]
+            "name": "cpp-netlib",
+            "default-features":false
+
+
         }
     ]
 }
