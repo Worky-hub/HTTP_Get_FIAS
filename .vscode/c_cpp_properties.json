@@ -4,9 +4,11 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/vcpkg_installed/x64-windows/include"
+                "${workspaceFolder}/vcpkg_installed/x64-windows/include",
+                "${workspaceFolder}/vcpkg_installed/x64-windows/include",
+                "${workspaceFolder}/vcpkg_installed/x64-windows/include/boost/network/uri"     
                 // "C:/cppWorkspace/Projects/Work_Projects/FIAS/Get_Requests/external/boost-url/include/boost"
-            ],
+            ], 
             "defines": [
                 "_DEBUG",
                 "UNICODE",

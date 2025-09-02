@@ -4,16 +4,26 @@
 		{
 			"type": "shell",
 			"label": "Build EXE",
-			"command": "call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\" && cl /nologo /EHsc ${fileBasename}",
+			"command": "cmd.exe",
 			"args":  [
-				"/IC:\\cppProjects\\test\\vcpkg_installed\\x64-windows\\include"
-			],
+				"/d",
+				"/c",
+				"call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\" &&",
+				"cl",
+				"/nologo",
+				"/EHsc",
+				"${file}",
+				"/I","C:\\cppWorkspace\\Projects\\Work_Projects\\FIAS\\Get_Requests\\vcpkg_installed\\x64-windows\\include",
+				"/link",
+				"/LIBPATH:C:\\cppWorkspace\\Projects\\Work_Projects\\FIAS\\Get_Requests\\vcpkg_installed\\x64-windows\\lib",
+				"ws2_32.lib",
+				"winhttp.lib"
+			],  
 			"options": {
 				"shell": {
-					"executable": "cmd.exe",
+					// "executable": "cmd.exe",
 					"args": [
-						"/d",
-						"/c"
+
 					]
 				}
 			},
@@ -213,7 +223,8 @@
 			"args":  [
 				"cmake",
 				"-B", "cmake_build",
-				"-S", "."
+				"-S", ".",
+				"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake"
 			],
 			"group": {
 				"kind": "build",

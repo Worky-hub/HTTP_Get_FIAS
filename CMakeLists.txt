@@ -60,12 +60,19 @@ set(SOURCES
 #)
 
 # Создаём исполняемый файл
-add_executable(getInfoFromFias ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES})
 # add_executable(GetInfoFromFias src/main.cpp)
 
-set_target_properties(getInfoFromFias PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build"
-)
+find_package(cpp-netlib CONFIG REQUIRED)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    cppnetlib_uri
+    )
+
+
+# set_target_properties(getInfoFromFias PROPERTIES
+#     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build"
+# )
 
 # Линкуем WinHTTP
 # target_link_libraries(getInfoFromFias winhttp)
